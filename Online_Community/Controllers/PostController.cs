@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Online_Community.Controllers
 {
@@ -16,6 +17,24 @@ namespace Online_Community.Controllers
                                 .Include(p => p.Comments)
                                 .ThenInclude(c => c.User)
                                 .ToList();
+
+                //anthor way to fetch
+
+                /*var followersId = context.Follows
+                    .Where(f => f.FollowerId == userId)
+                    .Select(f => f.FollowingId)
+                    .ToList();
+
+                if (!followersId.Any()) return;
+
+                var latestPosts = context.Posts
+                    .Where(p => followersId.Contains(p.UserId))
+                    .Include(p => p.Likes)
+                    .Include(p => p.Comments)
+                        .ThenInclude(c => c.User)
+                    .OrderByDescending(p => p.Likes.Count)
+                    .ToList();*/
+
 
                 foreach (var post in latestPosts)
                 {

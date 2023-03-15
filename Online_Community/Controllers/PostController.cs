@@ -10,17 +10,17 @@ namespace Online_Community.Controllers
         {
             using (var context = new OnlineCommunityDbContext())
             {
-                var latestPosts = context.Posts
+                /*var latestPosts = context.Posts
                                 .Where(p => context.Follows.Any(f => f.FollowerId == userId && f.FollowingId == p.UserId))
                                 .Include(p => p.User)
                                 .Include(p => p.Likes)
                                 .Include(p => p.Comments)
                                 .ThenInclude(c => c.User)
-                                .ToList();
-
+                                .ToList();*/
+                
                 //anthor way to fetch
 
-                /*var followersId = context.Follows
+                var followersId = context.Follows
                     .Where(f => f.FollowerId == userId)
                     .Select(f => f.FollowingId)
                     .ToList();
@@ -33,7 +33,7 @@ namespace Online_Community.Controllers
                     .Include(p => p.Comments)
                         .ThenInclude(c => c.User)
                     .OrderByDescending(p => p.Likes.Count)
-                    .ToList();*/
+                    .ToList();
 
 
                 foreach (var post in latestPosts)

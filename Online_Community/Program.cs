@@ -17,7 +17,7 @@ namespace Online_Community
 
 
             /*If you want to show the latest news, use this method*/
-            PostController.LatestNews(1 /* or insert your Id */);
+            //PostController.LatestNews(1 /* or insert your Id */);
 
 
     /*View profile*/
